@@ -5,7 +5,7 @@
 - _Date Created_: 17 1 2026
 - _Last Modification Date_: DD MMM YYYY
 - _Lab Timberlea URL_: <http://example.com/>
-- _Lab Gitlab URL_: https://git.cs.dal.ca/phung/csci-3172/-/tree/main/activities/activityL4V3
+- _Lab Gitlab URL_: https://git.cs.dal.ca/phung/csci-3172/-/tree/main/activities/lecture4 
 
 ## Authors
 
