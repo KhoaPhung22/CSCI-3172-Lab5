@@ -1,0 +1,89 @@
+/* 1. Layout & Typography */
+body {
+    margin: 0; 
+    padding: 0;
+    font-family: Arial, sans-serif; /* CSS1 */
+    color: #333333;
+    background-color: #f0f2f5; /* CSS1 */
+    line-height: 1.5; /* CSS1 */
+}
+
+header, main, section, footer {
+    display: block; /* CSS2 - block level elements */
+}
+
+.container {
+    width: 90%; /* CSS1 */
+    max-width: 1000px; /* CSS2 */
+    margin: 0 auto; /* CSS1 - Centering */
+}
+
+/* 2. CSS3 PROPERTIES (Modern Aesthetics) */
+.hero {
+    background: linear-gradient(135deg, #1a2a6c, #31ceda, #10606d);
+    color: white;
+    padding: 60px 0;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    margin: 20px 0;
+    border-radius: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.highlight {
+    color: #e5bb3e;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5); /* CSS3 Text Shadow */
+}
+
+/* 3. RESPONSIVE DESIGN (CSS3 Media Queries) */
+/* Flexbox - CSS3 Layout */
+.skills-grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.skill-item {
+    flex: 1;
+    min-width: 250px;
+    background: #fdfdfd;
+    border: 1px solid #ddd; /* CSS1 */
+    padding: 15px;
+    border-radius: 10px;
+}
+
+/* Responsive adjustment for small screens */
+/* Cite this*/
+@media screen and (max-width: 768px) {
+    .hero {
+        padding: 40px 10px;
+    }
+    
+    .skills-grid {
+        flex-direction: column;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+}
+
+/*4. FOOTER*/
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #1a2a6c;
+    color: white;
+    font-size: 0.9rem;
+}
