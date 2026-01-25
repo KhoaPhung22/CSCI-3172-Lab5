@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset='utf-8'>
+	<title>Magic 8-Ball Example</title>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<link rel='stylesheet' type='text/css' media='screen' href='css/style.css'>
+	
+</head>
+<body>
+	<section>
+		<h1>Ask the Magic 8-Ball or Fortune Cookie</h1>
+		<div class="magicBall">
+			<div class="selector">
+				<label>
+					<input type="radio" name="fortune-type" value="magic8" checked> Magic 8-Ball
+				</label>
+				<label>
+					<input type="radio" name="fortune-type" value="fortuneCookie"> Fortune Cookie
+				</label>
+			</div>
+			<input type="text" id="userQuestion" placeholder="Enter your question">
+			<button onclick="askQuestion()">Ask</button>
+		</div>
+		<p id="answer"></p>
+	</section>
+	<script src='js/script.js'></script>
+</body>
+</html>
