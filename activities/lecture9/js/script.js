@@ -18,7 +18,7 @@ function handleFocus(event) {
 function handleBlur(event) {
      for (let i = 0; i < inputIds.length; i++) {
         if (event.target === inputIds[i]) {
-            inputIds[i].style.backgroundColor = '#ede4db';
+            inputIds[i].style.backgroundColor = '';
             // Log to console when the input field is blurred
             console.log('Input field blurred');
 }
