@@ -189,4 +189,4 @@ Using RegExr changes the workflow to guessing to clearly understand how it works
 	- More importantly, it explain token breakdown which are difficult to memorize. This help me with focusing on brainstorming rather than remembering 
 Challenge face: 
 	 I encounter challenge when I deduct all the requirement for the password. Mostly be they are quite complicated and took me most of the time. I pass all the test case except 2aB#n!3ha-b4. Additionally, I got trouble when applied to the token. It took me a while to applies to these token. 
-	The Gilab from Dalhousie has been downed for 2 days. Therefore, the file will be available on Brightspace and Timberlea. I will submit to GitLab as soon as Gitlab is accessible
+	The Gilab from Dalhousie has been downed for 2 days. Therefore, the file will be available on Brightspace. I will submit to GitLab as soon as Gitlab is accessible
