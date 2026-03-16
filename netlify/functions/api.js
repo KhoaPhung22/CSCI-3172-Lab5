@@ -58,7 +58,7 @@ router.get("/recipes", async (req, res) => {
   try {
     const params = new URLSearchParams({
       apiKey: API_KEY,
-      number: 6,
+      number: 21,
       addRecipeInformation: true,
       fillIngredients: false
     });
