@@ -1,7 +1,16 @@
+/**
+ * server.test.js — Server-side integration tests
+ * CSCI 3172 Lab 5
+ *
+ * Tests the Express routes via Supertest.
+ * `global.fetch` is mocked with jest.fn() so no real Spoonacular API calls are made.
+ * The app's `NODE_ENV=test` guard prevents app.listen() from running,
+ * so there are no port conflicts.
+ */
 
 import { jest } from "@jest/globals";
 
-// Mock fetch BEFORE importing api.js 
+// ── Mock fetch BEFORE importing api.js ────────────────────────────────────────
 const mockFetch = jest.fn();
 global.fetch = mockFetch;
 
@@ -16,7 +25,7 @@ const { app } = await import("../netlify/functions/api.js");
 const { default: supertest } = await import("supertest");
 const request = supertest(app);
 
-// Helpers 
+// ─── Helpers ──────────────────────────────────────────────────────────────────
 function mockSuccess(body) {
   mockFetch.mockResolvedValueOnce({
     ok: true,
@@ -38,7 +47,7 @@ beforeEach(() => {
   process.env.SPOONACULAR_API_KEY = "test-api-key";
 });
 
-//GET /api/hello 
+// ─── GET /api/hello ───────────────────────────────────────────────────────────
 describe("GET /api/hello", () => {
   it("returns 200 with a message string", async () => {
     const res = await request.get("/api/hello");
@@ -48,7 +57,7 @@ describe("GET /api/hello", () => {
   });
 });
 
-//GET /api/recipes
+// ─── GET /api/recipes ─────────────────────────────────────────────────────────
 describe("GET /api/recipes", () => {
   it("returns 200 when neither ingredients nor diet are provided (general search)", async () => {
     mockSuccess({ results: [], totalResults: 0 });
@@ -120,7 +129,7 @@ describe("GET /api/recipes", () => {
   });
 });
 
-// GET /api/recipe/:id 
+// ─── GET /api/recipe/:id ──────────────────────────────────────────────────────
 describe("GET /api/recipe/:id", () => {
   it("returns 400 for a non-numeric ID", async () => {
     const res = await request.get("/api/recipe/abc");
@@ -174,7 +183,7 @@ describe("GET /api/recipe/:id", () => {
   });
 });
 
-// GET /api/random 
+// ─── GET /api/random ──────────────────────────────────────────────────────────
 describe("GET /api/random", () => {
   it("returns a single recipe object with title and id", async () => {
     mockSuccess({

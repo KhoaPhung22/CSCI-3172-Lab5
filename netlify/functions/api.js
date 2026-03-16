@@ -1,19 +1,29 @@
-//Load the webserver framework
+/**
+ * api.js — Recipe Recommender App Backend
+ * CSCI 3172 Lab 5
+ *
+ * Runs as a Netlify Serverless Function (via serverless-http + Express).
+ * The /api/* redirect in netlify.toml routes browser requests here.
+ *
+ * Routes:
+ *   GET /api/hello           — Health check
+ *   GET /api/recipes         — Search recipes by ingredients + diet
+ *   GET /api/recipe/:id      — Fetch full recipe detail
+ *   GET /api/random          — Fetch a single random recipe
+ */
+
 import express from "express";
-//Load the serverless framework
 import serverless from "serverless-http";
-//Load the dotenv framework
 import dotenv from "dotenv";
-//Load the spoonacular API key in the .env file
 dotenv.config();
 
 const app = express();
 const router = express.Router();
 
-// Allow JSON data to be sent to the server
+// ─── Middleware ───────────────────────────────────────────────────────────────
 app.use(express.json());
 
-// Helper: forward Spoonacular errors cleanly
+// ─── Helper: forward Spoonacular errors cleanly ───────────────────────────────
 function spoonacularError(res, error, context = "") {
   console.error(`[api] Spoonacular error${context ? " (" + context + ")" : ""}:`, error.message);
   if (error.message?.includes("API key")) {
@@ -22,7 +32,7 @@ function spoonacularError(res, error, context = "") {
   return res.status(502).json({ error: "Failed to reach the recipe API. Please try again later." });
 }
 
-// GET /api/hello 
+// ─── GET /api/hello ──────────────────────────────────────────────────────────
 // Health check — used by integration tests and Netlify deploy checks.
 router.get("/hello", (_req, res) => {
   res.json({ message: "Hello from the Recipe Recommender backend!" });
@@ -36,7 +46,10 @@ router.get("/hello", (_req, res) => {
 // At least one must be provided; returns 400 otherwise.
 router.get("/recipes", async (req, res) => {
   const { ingredients, diet } = req.query;
+
   // No longer returning 400 if both are missing; instead, it returns general recipes.
+
+
   const API_KEY = process.env.SPOONACULAR_API_KEY;
   if (!API_KEY) {
     return res.status(500).json({ error: "Server configuration error: API key missing." });
@@ -83,7 +96,7 @@ router.get("/recipes", async (req, res) => {
   }
 });
 
-// GET /api/recipe/:id
+// ─── GET /api/recipe/:id ─────────────────────────────────────────────────────
 // Returns full detail: ingredients, step-by-step instructions, summary, source.
 router.get("/recipe/:id", async (req, res) => {
   const { id } = req.params;
@@ -154,6 +167,7 @@ router.get("/random", async (req, res) => {
   if (!API_KEY) {
     return res.status(500).json({ error: "Server configuration error: API key missing." });
   }
+
   try {
     const response = await fetch(
       `https://api.spoonacular.com/recipes/random?apiKey=${API_KEY}&number=1`

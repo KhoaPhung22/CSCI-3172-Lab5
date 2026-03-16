@@ -1,4 +1,7 @@
 
+
+// ─── Pure Utility Functions (exported for unit tests)
+
 /**
  * Add an ingredient string to the array (case-insensitive dedup, trims whitespace).
  * @param {string} tag
@@ -168,7 +171,8 @@ export function renderSkeletons(container, count = 6) {
     </div>`).join("");
 }
 
-//API Fetch Functions 
+// ─── API Fetch Functions
+
 /**
  * Fetch recipes from the backend.
  * @param {string} ingredients comma-separated
@@ -215,7 +219,7 @@ export async function fetchRecipeDetail(id) {
   return res.json();
 }
 
-// Modal 
+// ─── Modal
 
 /**
  * Populate and open the recipe detail modal.
@@ -296,10 +300,10 @@ export function closeModal(modal) {
   if (modal) modal.close();
 }
 
-//Application Init
+// ─── Application Init 
 
 function init() {
-  // DOM refs
+  // ── DOM refs 
   const ingredientInput = document.getElementById("ingredient-input");
   const addIngBtn = document.getElementById("add-ingredient-btn");
   const pillContainer = document.getElementById("ingredient-pills");
@@ -312,10 +316,10 @@ function init() {
   const modalContent = document.getElementById("modal-content");
   const modalCloseBtn = document.getElementById("modal-close-btn");
 
-  //State
+  // ── State ─────────────────────────────────────────────────────────
   let ingredients = [];
 
-  //Helpers 
+  // ── Helpers ───────────────────────────────────────────────────────
   function getSelectedDiet() {
     const selected = document.querySelector("input[name='diet']:checked");
     return selected ? selected.value : "";
@@ -327,7 +331,7 @@ function init() {
     });
   }
 
-  //Ingredient management
+  // ── Ingredient management ─────────────────────────────────────────
   function handleAddIngredient() {
     const val = (ingredientInput.value || "").trim();
     if (!val) return;
@@ -354,7 +358,7 @@ function init() {
     renderIngredientPills(ingredients, pillContainer);
   });
 
-  //Recipe Search 
+  // ── Recipe Search ─────────────────────────────────────────────────
   searchBtn.addEventListener("click", async () => {
     const diet = getSelectedDiet();
 
@@ -376,7 +380,7 @@ function init() {
     }
   });
 
-  //Surprise Me
+  // ── Surprise Me ───────────────────────────────────────────────────
   surpriseBtn.addEventListener("click", async () => {
     clearBanner(statusBanner);
     setButtonsLoading(true);
@@ -393,7 +397,7 @@ function init() {
     }
   });
 
-  //Clear
+  // ── Clear ─────────────────────────────────────────────────────────
   clearBtn.addEventListener("click", () => {
     ingredients = [];
     renderIngredientPills([], pillContainer);
@@ -403,7 +407,7 @@ function init() {
     clearBanner(statusBanner);
   });
 
-  //Recipe Card — open modal
+  // ── Recipe Card — open modal ──────────────────────────────────────
   resultsGrid.addEventListener("click", async (e) => {
     const card = e.target.closest(".recipe-card");
     if (!card) return;
@@ -432,7 +436,7 @@ function init() {
     }
   }
 
-  //Modal close
+  // ── Modal close ───────────────────────────────────────────────────
   modalCloseBtn.addEventListener("click", () => closeModal(recipeModal));
 
   recipeModal.addEventListener("click", (e) => {

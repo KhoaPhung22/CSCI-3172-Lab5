@@ -1,3 +1,13 @@
+/**
+ * client.test.js — Client-side unit tests
+ * CSCI 3172 Lab 5
+ *
+ * @jest-environment jsdom
+ *
+ * Tests pure utility functions exported from main.js.
+ * jsdom provides the DOM environment; fetch is mocked via jest.fn().
+ * No network calls are made.
+ */
 
 import {
   addIngredient,
@@ -10,7 +20,7 @@ import {
   renderSkeletons,
 } from "../public/js/main.js";
 
-//addIngredient
+// ─── addIngredient ────────────────────────────────────────────────────────────
 describe("addIngredient", () => {
   it("adds a new ingredient to an empty array", () => {
     const result = addIngredient("tomato", []);
@@ -59,7 +69,7 @@ describe("addIngredient", () => {
   });
 });
 
-// removeIngredient 
+// ─── removeIngredient ─────────────────────────────────────────────────────────
 describe("removeIngredient", () => {
   it("removes an existing ingredient", () => {
     const arr = ["tomato", "cheese", "basil"];
@@ -91,7 +101,7 @@ describe("removeIngredient", () => {
   });
 });
 
-//stripHtml
+// ─── stripHtml ────────────────────────────────────────────────────────────────
 describe("stripHtml", () => {
   it("removes HTML tags from a string", () => {
     const result = stripHtml("<p>Hello <b>world</b></p>");
@@ -117,7 +127,7 @@ describe("stripHtml", () => {
   });
 });
 
-// showBanner / clearBanner
+// ─── showBanner / clearBanner ─────────────────────────────────────────────────
 describe("showBanner", () => {
   it("sets error class and message on the container", () => {
     const container = document.createElement("div");
@@ -152,7 +162,7 @@ describe("clearBanner", () => {
   });
 });
 
-// renderIngredientPills 
+// ─── renderIngredientPills ────────────────────────────────────────────────────
 describe("renderIngredientPills", () => {
   it("renders a pill for each ingredient", () => {
     const container = document.createElement("div");
@@ -180,7 +190,7 @@ describe("renderIngredientPills", () => {
   });
 });
 
-//renderRecipeCards 
+// ─── renderRecipeCards ────────────────────────────────────────────────────────
 describe("renderRecipeCards", () => {
   const sampleRecipes = [
     {
@@ -249,7 +259,7 @@ describe("renderRecipeCards", () => {
   });
 });
 
-// renderSkeletons 
+// ─── renderSkeletons ──────────────────────────────────────────────────────────
 describe("renderSkeletons", () => {
   it("renders the specified number of skeleton cards", () => {
     const container = document.createElement("div");
