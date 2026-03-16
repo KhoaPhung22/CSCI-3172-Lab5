@@ -5,7 +5,7 @@
 - _Date Created_: 15 03 2026
 - _Last Modification Date_: 15 03 2026
 - _Lab Netlify URL_: https://lab5csci3172kaiphung.netlify.app/
-- _Lab Gitlab URL_: https://git.cs.dal.ca/phung/csci-3172/-/tree/main/labs/lab5?ref_type=heads
+- _Lab Gitlab URL_: https://git.cs.dal.ca/phung/csci-3172/-/tree/main/labs/lab5
 
 ## Authors
 
